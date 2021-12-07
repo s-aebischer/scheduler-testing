@@ -7,7 +7,7 @@ namespace SchedulerTesting\Job;
 use TaskScheduler;
 use SchedulerTesting\Bootstrap\ContainerBuilder;
 
-class JobLogger extends TaskScheduler\AbstractJob
+class BasicJob extends TaskScheduler\AbstractJob
 {
     /**
      * {@inheritdoc}

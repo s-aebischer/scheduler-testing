@@ -7,6 +7,7 @@ namespace SchedulerTesting\Job;
 use Composer\Autoload\ClassLoader as Composer;
 use MongoDB\Database;
 use Psr\Log\LoggerInterface;
+use SchedulerTesting\Async\Sync;
 use SchedulerTesting\Bootstrap\ContainerBuilder;
 use TaskScheduler\Scheduler;
 
@@ -18,19 +19,34 @@ class JobHandling
     public function __construct(Composer $composer)
     {
         $this->dic = ContainerBuilder::get($composer);
+        $this->scheduler = new Scheduler($this->dic->get(Database::class), $this->dic->get(LoggerInterface::class));
     }
 
-    public function addJob()
+    public function addBasicJob()
     {
-        $scheduler = new Scheduler($this->dic->get(Database::class), $this->dic->get(LoggerInterface::class));
+        $this->scheduler->addJob(BasicJob::class, 'dies ist ein Test');
+    }
 
-        $scheduler->addJob(JobLogger::class, 'dies ist ein Test');
+    public function addExtendedJob()
+    {
+        $data = [
+            'collections' => [
+                'accounts'
+            ],
+            'endpoints' => [
+                'offers',
+                'relations'
+            ],
+            'simulate' => false,
+            'ignore' => false,
+            'log_level' => 'debug'
+        ];
+
+        $this->scheduler->addJob(Sync::class, $data);
     }
 
     public function flushJobs()
     {
-        $scheduler = new Scheduler($this->dic->get(Database::class), $this->dic->get(LoggerInterface::class));
-
-        $scheduler->flush();
+        $this->scheduler->flush();
     }
 }
