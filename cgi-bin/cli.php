@@ -20,11 +20,17 @@ $options = getopt($shortopts, $longopts);
 
 if (isset($options['c'])) {
     switch ($options['c']) {
-        case 'addJob':
-            $logger->debug('add new job', [
+        case 'addBasicJob':
+            $logger->debug('add new basic job', [
                 'category' => 'cli.php'
             ]);
-            $dic->get(SchedulerTesting\Job\JobHandling::class)->addJob();
+            $dic->get(SchedulerTesting\Job\JobHandling::class)->addBasicJob();
+            break;
+        case 'addExtendedJob':
+            $logger->debug('add new extended job', [
+                'category' => 'cli.php'
+            ]);
+            $dic->get(SchedulerTesting\Job\JobHandling::class)->addExtendedJob();
             break;
         case 'runScheduler':
             $logger->debug('start scheduler', [
