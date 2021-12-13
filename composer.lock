@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "04288441fcb35c7e6c14a8f46c020d12",
+    "content-hash": "b71e110bc7bf7da320b25795450f6fe7",
     "packages": [
         {
             "name": "bramus/ansi-php",
@@ -210,16 +210,16 @@
         },
         {
             "name": "gyselroth/mongodb-php-task-scheduler",
-            "version": "v4.0.0-alpha6",
+            "version": "v4.0.0-beta1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/gyselroth/php-task-scheduler.git",
-                "reference": "ad524beea57b0eced456a67575b338205c06ae38"
+                "reference": "098c8f81f200b87a45953ba893e87803eae741cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/gyselroth/php-task-scheduler/zipball/ad524beea57b0eced456a67575b338205c06ae38",
-                "reference": "ad524beea57b0eced456a67575b338205c06ae38",
+                "url": "https://api.github.com/repos/gyselroth/php-task-scheduler/zipball/098c8f81f200b87a45953ba893e87803eae741cd",
+                "reference": "098c8f81f200b87a45953ba893e87803eae741cd",
                 "shasum": ""
             },
             "require": {
@@ -264,7 +264,7 @@
                 "mongodb",
                 "task-scheduler"
             ],
-            "time": "2021-11-29T11:25:18+00:00"
+            "time": "2021-12-13T15:29:48+00:00"
         },
         {
             "name": "hassankhan/config",
@@ -427,16 +427,16 @@
         },
         {
             "name": "mongodb/mongodb",
-            "version": "1.10.0",
+            "version": "1.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mongodb/mongo-php-library.git",
-                "reference": "b0bbd657f84219212487d01a8ffe93a789e1e488"
+                "reference": "9e0da590ec94e8af9a0ee065294627ffaee6244e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mongodb/mongo-php-library/zipball/b0bbd657f84219212487d01a8ffe93a789e1e488",
-                "reference": "b0bbd657f84219212487d01a8ffe93a789e1e488",
+                "url": "https://api.github.com/repos/mongodb/mongo-php-library/zipball/9e0da590ec94e8af9a0ee065294627ffaee6244e",
+                "reference": "9e0da590ec94e8af9a0ee065294627ffaee6244e",
                 "shasum": ""
             },
             "require": {
@@ -488,7 +488,7 @@
                 "mongodb",
                 "persistence"
             ],
-            "time": "2021-10-20T22:22:37+00:00"
+            "time": "2021-12-06T21:42:33+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -1088,7 +1088,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "gyselroth/mongodb-php-task-scheduler": 15,
+        "gyselroth/mongodb-php-task-scheduler": 10,
         "monolog/monolog": 10
     },
     "prefer-stable": false,

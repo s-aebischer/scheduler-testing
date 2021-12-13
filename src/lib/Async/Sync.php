@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace SchedulerTesting\Async;
 
+use MongoDB\BSON\ObjectId;
 use MongoDB\BSON\UTCDateTime;
 use MongoDB\Database;
 use Monolog\Handler\MongoDBHandler;
@@ -144,21 +145,21 @@ class Sync extends AbstractJob
                 'category' => get_class($this),
             ]);
 
-//            $i = 0;
-//            foreach ($this->stack as $proc) {
-//                ++$i;
-//                $proc->wait();
-//                $this->updateProgress($i / count($this->stack) * 100);
-//
-//                $record = $this->db->{$this->scheduler->getJobQueue()}->findOne([
-//                    '_id' => $proc->getId(),
-//                ]);
-//
-//                $this->error_count += $record['data']['error_count'] ?? 0;
-//                $this->increaseErrorCount();
-//            }
-//
-//            $this->stack = [];
+            $i = 0;
+            foreach ($this->stack as $proc) {
+                ++$i;
+                $proc->wait();
+                $this->updateProgress($i / count($this->stack) * 100);
+
+                $record = $this->db->{$this->scheduler->getJobQueue()}->findOne([
+                    '_id' => $proc->getId(),
+                ]);
+
+                $this->error_count += $record['data']['error_count'] ?? 0;
+                $this->increaseErrorCount();
+            }
+
+            $this->stack = [];
         }
 
         $abc = 123;
@@ -206,8 +207,6 @@ class Sync extends AbstractJob
                 $this->increaseErrorCount();
             }
         }
-
-        $test = 123;
     }
 
     /**
@@ -228,6 +227,23 @@ class Sync extends AbstractJob
             'category' => get_class($this)
         ]);
 
+        $i = 0;
+        while (true) {
+            if ($i === 5) {
+                return;
+            }
+
+            sleep(15);
+            $this->updateProgress($i * 20);
+            ++$i;
+
+            $this->logger->debug('process for current job '.$i, [
+                'category' => get_class($this)
+            ]);
+        }
+
+//        sleep(40);
+
 //        if ($endpoint->getType() === EndpointInterface::TYPE_SOURCE) {
 //            $this->import($collection, $this->getFilter(), ['name' => $endpoint->getName()], $this->data['simulate'], $this->data['ignore']);
 //        } elseif ($endpoint->getType() === EndpointInterface::TYPE_DESTINATION) {
@@ -238,7 +254,7 @@ class Sync extends AbstractJob
 //            ]);
 //        }
 
-        $this->logger->popProcessor();
+//        $this->logger->popProcessor();
     }
 
     /**

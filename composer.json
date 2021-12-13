@@ -8,7 +8,7 @@
         "ext-mongodb": "*",
         "mongodb/mongodb": "*",
         "psr/log": "^1.0.0",
-        "gyselroth/mongodb-php-task-scheduler": "^4.0.0-alpha6",
+        "gyselroth/mongodb-php-task-scheduler": "^4.0.0-beta1",
         "monolog/monolog": "^2.0.0-beta1",
         "bramus/monolog-colored-line-formatter": "~2.0",
         "gyselroth/micro-container": "^2.3.3",

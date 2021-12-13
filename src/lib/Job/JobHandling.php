@@ -31,18 +31,32 @@ class JobHandling
     {
         $data = [
             'collections' => [
-                'accounts'
+                'accounts',
+//                'roles'
             ],
             'endpoints' => [
                 'offers',
-                'relations'
+                'relations',
+//                [
+//                    'test1',
+//                    'test2'
+//                ]
             ],
             'simulate' => false,
             'ignore' => false,
             'log_level' => 'debug'
         ];
 
-        $this->scheduler->addJob(Sync::class, $data);
+        $options = [
+            'at'=> 1639053660,
+            'interval' => 0,
+            'interval_reference' => 'start',
+            'retry' => 0,
+            'retry_interval' => 0,
+            'timeout' => 0
+        ];
+
+        $this->scheduler->addJob(Sync::class, $data, $options);
     }
 
     public function flushJobs()
